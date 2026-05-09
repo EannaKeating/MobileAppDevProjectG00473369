@@ -25,6 +25,7 @@ export class HomePage {
   }
 
  goToDetails(movie: any) {
+  console.log(movie.id);
   this.router.navigate(['/movie-details', movie.id]); // navigate to movie details page when built
  }
  getImage(path: string) {
