@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import {Router} from '@angular/router'; // Need to add router for the favourites page
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonButtons, IonList, IonItem, IonLabel, IonThumbnail } from '@ionic/angular/standalone';
 import { TmdbService } from '../services/tmdb.service';
-
+import { CommonModule } from '@angular/common'
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true, // makes component self contained so can work witot being declared
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonButtons, IonList, IonItem, IonLabel, IonThumbnail],
+  imports: [CommonModule, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonButtons, IonList, IonItem, IonLabel, IonThumbnail],
 })
 export class HomePage {
   movies: any[] = []; //this array list holds movies
@@ -17,6 +17,7 @@ export class HomePage {
   constructor(private router: Router, private tmdb: TmdbService) {} // Constructor for navigating pages, runs when HomePage is created
   async ngOnInit(){
     this.movies = await this.tmdb.getTrendingMovies(); // to load the trending movies on the home page when the page runs
+    console.log(this.movies);
   }
 
   goToFavourites() {

@@ -14,8 +14,8 @@ export class TmdbService {
        const res = await axios.get(`${BASE_URL}/trending/movie/day?api_key=${API_KEY}`); //returns results from TMBD
        return res.data.results;
     }
-    getImageUrl(path: String, size: string = 'w500') {
-        return path ? `https://image.tmdb.orh/t/p${size}${path}` : null;
+    getImageUrl(path: string, size: string = 'w500') {
+        return path ? `https://image.tmdb.org/t/p/${size}${path}` : null;
         
     }
 }
