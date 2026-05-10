@@ -21,19 +21,25 @@
       (ionInput)="onSearch($event)">
     </ion-input>
    </ion-item>
+
   <ion-list>
+    <!--movie list, loops through movies array-->
     <ion-item 
     button="true" 
     *ngFor= "let movie of movies" 
     (click)="goToDetails(movie)">
+
+    <!--movie poster-->
       <ion-thumbnail slot="start">
         <img [src]="getImage(movie.poster_path)">
       </ion-thumbnail>
+
+      <!--Info-->
       <ion-label>
         <h2>{{ movie.title }}</h2>
         <p>{{ movie.overview }}</p>
       </ion-label>
-
+      <!--add to favs button-->
       <ion-button slot="end" (click)="addToFavourites(movie); $event.stopPropagation()">
         ❤️
       </ion-button>

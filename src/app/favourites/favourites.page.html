@@ -5,20 +5,20 @@
 </ion-header>
 
 <ion-content>
-
+<!--List of fav movies-->
   <ion-list>
-
+     <!--loop through favs array-->
     <ion-item *ngFor="let movie of favourites">
-
+        <!--movie poster-->
       <ion-thumbnail slot="start">
         <img [src]="'https://image.tmdb.org/t/p/w200' + movie.poster_path">
       </ion-thumbnail>
-
+        <!--title and overview-->
       <ion-label>
         <h2>{{ movie.title }}</h2>
         <p>{{ movie.overview }}</p>
       </ion-label>
-
+        <!--remove from favs button-->
       <ion-button slot="end" (click)="removeFromFavourites(movie)">
         Remove
       </ion-button>

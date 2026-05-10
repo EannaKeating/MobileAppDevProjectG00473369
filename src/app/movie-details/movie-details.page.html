@@ -8,10 +8,11 @@
       </ion-button>
     </ion-buttons>
 
+      <!--Movie Title -->
     <ion-title>
       {{movie?.title }}
     </ion-title>
-
+      <!--Favourites page button-->
     <ion-buttons slot="end">
       <ion-button routerLink="favourites">
         ❤️
@@ -31,13 +32,20 @@
 
 <!--Cast-->
 <h2>Cast</h2>
-<div *ngFor="let c of cast">
+<ion-item
+  button="true"
+  *ngFor="let c of cast"
+  (click)="goToPerson(c.id)"
+  >
+<ion-label>
   {{ c.name }} as {{ c.character }}
-</div>
+</ion-label>
+ 
+</ion-item>
 
-<!--Cast-->
+<!--Cre-->
 <h2>Crew</h2>
 <div *ngFor="let c of crew "> <!--updated to lloop over the crew instead of cast-->
-  {{c.name }} as {{ c.job}}
+  {{c.name }} as {{ c.job}} <!-- shows crew member and role-->
 </div>
 </ion-content>

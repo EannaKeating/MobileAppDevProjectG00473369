@@ -1,0 +1,63 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <!--home button-->
+      <ion-buttons slot="start">
+      <ion-button routerLink="/home">
+        🏠 Home
+      </ion-button>
+    </ion-buttons>
+      <!--name of person-->
+    <ion-title>
+      {{ person?.name }}
+    </ion-title>
+
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!--profile Image -->
+  <img
+   *ngIf="person?.profile_path"
+    [src]="getImage(person.profile_path)"
+    style="width: 100%; max-width: 250px; border-radius: 10px;"
+    >
+  <!--DOB and DOD-->
+  <p *ngIf="person?.birthday">
+    DOB: {{ person.birthday }}
+  </p>
+
+  <p *ngIf="person?.deathday">
+  DOD: {{ person.deathday }}
+  </p>
+
+  <p *ngIf="person?.place_of_birth">
+  Birthplace: {{ person.place_of_birth }}
+</p>
+
+<!--Also Known as-->
+<div *ngIf="person?.also_known_as?.length">
+  <h3>Also Known As</h3>
+  <p *ngFor="let aka of person.also_known_as">
+    {{ aka }}
+  </p>
+</div>
+
+<!--Bio-->
+<h3>Biography</h3>
+<p>
+  {{ person?.biography }}
+</p>
+<!--Movies-->
+<h3>Movies</h3>
+<!--loop through movies-->
+<ion-list>
+  <ion-item
+  button="true"
+  *ngFor="let m of movies"
+  (click)="goToMovie(m)"
+  >
+    {{ m.title }}
+</ion-item>
+</ion-list>
+</ion-content>
