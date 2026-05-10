@@ -3,14 +3,14 @@ import { CommonModule } from '@angular/common'; // needed for angular features *
 import { FormsModule } from '@angular/forms';
 import { TmdbService } from '../services/tmdb.service';
 import { ActivatedRoute } from '@angular/router'; // needed to get movieId from url
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonButton, } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-movie-details',
   templateUrl: './movie-details.page.html',
   styleUrls: ['./movie-details.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButtons, IonButton,]
 })
 export class MovieDetailsPage implements OnInit {
 

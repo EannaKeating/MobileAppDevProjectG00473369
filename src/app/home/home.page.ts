@@ -43,9 +43,15 @@ export class HomePage {
   return this.tmdb.getImageUrl(path); // get movie poster URL
  }
  addToFavourites(movie: any) {
+
   let favs = JSON.parse(localStorage.getItem('favourites') || '[]');
+
+  const exists = favs.find((m: any) => m.id === movie.id);
+
+  if (!exists) {
   favs.push(movie);
 
   localStorage.setItem('favourites', JSON.stringify(favs));
  }
+}
 }
