@@ -8,12 +8,19 @@
 
       <!--Favourites Button added-->
       <ion-button slot ="end" (click) ="goToFavourites()">
-             favourites 
+        ❤️ 
       </ion-button>
     </ion-toolbar>
 </ion-header>
 <!--added button to the posters on the home page which will link to movie-details-->
 <ion-content [fullscreen]="true">
+  <!-- Search Bar-->
+   <ion-item>
+    <ion-input
+      placeholder="Search movies..."
+      (ionInput)="onSearch($event)">
+    </ion-input>
+   </ion-item>
   <ion-list>
     <ion-item 
     button="true" 
@@ -26,6 +33,10 @@
         <h2>{{ movie.title }}</h2>
         <p>{{ movie.overview }}</p>
       </ion-label>
+
+      <ion-button slot="end" (click)="addToFavourites(movie); $event.stopPropagation()">
+        ❤️
+      </ion-button>
     </ion-item>
   </ion-list>
  

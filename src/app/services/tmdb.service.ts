@@ -33,4 +33,12 @@ export class TmdbService {
         return path ? `https://image.tmdb.org/t/p/${size}${path}` : null;
         
     }
+
+    async searchMovies(query: string) {
+
+        const res = await axios.get(
+            `${BASE_URL}/search/movie?query=${query}&api_key=${API_KEY}`
+        );
+        return res.data.results;
+    }
 }

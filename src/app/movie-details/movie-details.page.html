@@ -14,12 +14,12 @@
 <!--Cast-->
 <h2>Cast</h2>
 <div *ngFor="let c of cast">
-  {{ c.name }} as {{ c.charachter }}
+  {{ c.name }} as {{ c.character }}
 </div>
 
 <!--Cast-->
 <h2>Crew</h2>
-<div *ngFor="let c of cast">
+<div *ngFor="let c of crew "> <!--updated to lloop over the crew instead of cast-->
   {{c.name }} as {{ c.job}}
 </div>
 </ion-content>
