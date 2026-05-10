@@ -19,6 +19,8 @@ export class MovieDetailsPage implements OnInit {
   cast: any[] = []; //stores array list of cast members
   crew: any[] = []; //stores array list of crew members 
 
+  isFavourite: boolean = false; // boolean to check if add to favs
+
   constructor(private route: ActivatedRoute, private tmdb: TmdbService) { } // runs when page is created, Injected Activated route so can access parameters
 
   async ngOnInit() {
@@ -34,7 +36,26 @@ export class MovieDetailsPage implements OnInit {
 
     this.crew = credits.crew; // store crew array
 
-    
+    let favs = JSON.parse(localStorage.getItem('favourites')  || '[]');
   }
+  toggleFavourite() {
 
+    let favs = JSON.parse(localStorage.getItem('favourites') || '[]');
+
+    const exists = favs.findIndex((m: any) => m.id === this.movie.id);
+
+    if (exists > -1) {
+      // remove movie
+      favs.splice(exists, 1);
+      this.isFavourite = false;
+    } else {
+      // add movie
+      favs.push(this.movie);
+      this.isFavourite = true;
+    }
+
+    // save to localStorage
+    localStorage.setItem('favourites', JSON.stringify(favs));
+  }
 }
+

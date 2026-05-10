@@ -1,5 +1,13 @@
 <ion-header>
   <ion-toolbar>
+
+    <!--Home Icon-->
+    <ion-buttons slot="start">
+      <ion-button routerLink="/home">
+        🏠
+      </ion-button>
+    </ion-buttons>
+
     <ion-title>
       {{movie?.title }}
     </ion-title>
@@ -16,6 +24,10 @@
 <!--Overview-->
   <h2>Overview</h2>
   <p>{{ movie?.overview }}</p>
+  <!--tect changes depending on if movie is already saved -->
+    <ion-button (click)="toggleFavourite()">
+      {{ isFavourite ? 'Remove From Favourites' : 'Add To Favourites'}}
+    </ion-button>
 
 <!--Cast-->
 <h2>Cast</h2>
